@@ -75,6 +75,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (= 5.2.3)
   bcrypt
+  bundler
   pry
   pry-nav
   rack_session_access
