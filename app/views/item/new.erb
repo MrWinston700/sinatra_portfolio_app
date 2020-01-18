@@ -1,0 +1,14 @@
+<% if Helper.is_logged_in?(session) %>
+  <form action='/item' method="post">
+    <h1>Create item:</h1>
+    <input type="text" name="item[name]">Enter name of item: </input><br>
+    <input type="text" name="item[description]"> description: </input><br>
+    <input type="integer" name="item[cost]"> cost: </input><br>
+    
+    
+    <input type="submit" name="submit" id="submit">
+  </form>
+
+  <% else %>
+      <h1> You Must Be Logged in to Make items </h1>
+  <% end %>
