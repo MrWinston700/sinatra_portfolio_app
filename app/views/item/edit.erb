@@ -1,0 +1,11 @@
+<form action="/item/<%= @item.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  
+    <input type="text" name="item[name]">Enter name of item: </input><br>
+    <input type="text" name="item[description]"> description: </input><br>
+    <input type="integer" name="item[cost]"> cost: </input><br>
+    
+  
+  <input type="submit" value="submit" id="submit">
+  
+</form>

@@ -21,7 +21,7 @@ class UserController < ApplicationController
         
     get "/login" do
       if Helper.is_logged_in?(session)
-        erb :'item/items'
+        redirect '/items'
       else
         erb :'/user/login'
       end
@@ -32,7 +32,7 @@ class UserController < ApplicationController
     
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        erb :"/item/items"
+        redirect '/items'
       else
         redirect "/login"
       end
@@ -41,7 +41,7 @@ class UserController < ApplicationController
     get '/users/:id' do
       @user = User.find_by_id(params[:id])
       if !@user.nil?
-        erb :'/item/items'
+        redirect '/items'
       else 
         redirect to '/login'
       end

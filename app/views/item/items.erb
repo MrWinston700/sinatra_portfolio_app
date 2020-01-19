@@ -1,1 +1,6 @@
-<h1>yea working nice</h1>
+<% @items.each do |item| %>
+    <p><%= item.name %></p>
+    <p><%= item.user.username %></p>
+
+
+<% end %>
