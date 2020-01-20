@@ -75,6 +75,29 @@ class ItemController < ApplicationController
       erb :"item/show"
     end
 
+    get '/item/:id/buy' do
+      if Helper.is_logged_in?(session)
+        @item = Item.find_by_id(params[:id])
+        if @item.status != "bought" && @item.status != "sold"
+          @item.status = "sold"
+          @item.save
+          @sold_item = Item.new 
+          @sold_item.name = @item.name
+          @sold_item.description = @item.description
+          @sold_item.cost = @item.cost 
+          @sold_item.status = "bought"
+          @user = User.find_by_id(session[:user_id])
+          @user.items << @sold_item
+          redirect '/items'
+        else 
+          redirect '/items'
+        end
+        
+      else
+        redirect 'login'
+      end
+    end
+
 
   
 
