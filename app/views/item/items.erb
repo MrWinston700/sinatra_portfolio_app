@@ -1,6 +1,6 @@
 <% @items.each do |item| %>
     <% if item.status == "selling" %>
-        <h2>@<%= item.user.username %></h2>
+        <a href="profile/<%=item.user.id%>"><h2>@<%= item.user.username %></h2></a>
         <a href="item/<%=item.id%>"><h3><%= item.name %></h3></a>
         <p><%= item.description %></p>
         <p>$<%= item.cost %></p><br>

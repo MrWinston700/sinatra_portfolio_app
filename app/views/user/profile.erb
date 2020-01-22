@@ -2,7 +2,7 @@
 
 <% @items.each do |item| %>
     <% if item.status == "selling" %>    
-        <a href="item/<%=item.id%>"><h3><%= item.name %></h3></a>
+        <a href="/item/<%=item.id%>"><h3><%= item.name %></h3></a>
         <p><%= item.description%></p><br>
         <p>$<%= item.cost%></p><br>
     <% end %>
