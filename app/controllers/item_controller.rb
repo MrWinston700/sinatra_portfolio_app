@@ -80,7 +80,6 @@ class ItemController < ApplicationController
         @item = Item.find_by_id(params[:id])
         if @item.status != "bought" && @item.status != "sold"
           @item.status = "sold"
-          
           @sold_item = Item.new 
           @sold_item.name = @item.name
           @sold_item.description = @item.description
