@@ -51,5 +51,18 @@ class UserController < ApplicationController
       session.clear
       redirect "/"
     end
+
+    get "/profile/:id" do
+      if Helper.is_logged_in?(session)
+        @user = User.find_by_id(params[:id])
+        @items = @user.items.all
+        erb :'/user/profile'
+      else
+        redirect "/index"
+      end
+      
+
+
+    end
     
 end
