@@ -1,6 +1,9 @@
-<p><%= @item.user.username %></p><br>
-    <p><%= @item.name%></p><br>
-    <p><%= @item.description%></p><br>
-    <p><%= @item.status%></p><br>
-    <p>$<%= @item.cost%></p><br>
-    <a href="<%=@item.id%>/buy"><p>buy</p></a>
+    <% if @item.status == "selling" %>
+        <p><%= @item.user.username %></p><br>
+        <p><%= @item.name%></p><br>
+        <p><%= @item.description%></p><br>
+        <p>$<%= @item.cost%></p><br>
+        <a href="<%=@item.id%>/buy"><p>buy</p></a>
+    <% else %>
+        <p>the item you are looking for is no longer available</p>
+    <%end%>

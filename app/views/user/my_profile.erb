@@ -1,0 +1,9 @@
+<p><%= @user.username %></p>
+<p><%= @user.points %></p>
+
+<% @user.items.each do |item| %>
+    <p><%= item.name%></p><br>
+    <p><%= item.description%></p><br>
+    <p><%= item.status%></p><br>
+    <p>$<%= item.cost%></p><br>
+<% end %>

@@ -65,4 +65,14 @@ class UserController < ApplicationController
 
     end
     
+    get "/profile" do
+      if Helper.is_logged_in?(session)
+        @user = Helper.current_user(session)
+        erb :'/user/my_profile'
+      else
+        redirect "/index"
+      end
+    end
+
+    
 end
