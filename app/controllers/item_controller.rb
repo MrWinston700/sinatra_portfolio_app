@@ -63,8 +63,15 @@ class ItemController < ApplicationController
       if params[:item].empty?
         redirect "/item/#{item.id}/edit"
       end
-    
-      @item.update(params[:item])
+      if !(params[:item][:name].empty?)
+        @item.name = params[:item][:name]
+      end
+      if !(params[:item][:description].empty?)
+        @item.description = params[:item][:description]
+      end
+      if !(params[:item][:cost].empty?)
+        @item.cost = params[:item][:cost]
+      end
       @item.save
       redirect "/item/#{@item.id}"
     end
