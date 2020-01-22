@@ -11,7 +11,9 @@ class UserController < ApplicationController
       
     post "/signup" do 
         if !(params.has_value?(""))
-            user = User.create(params)
+            user = User.new(params)
+            user.points = 100
+            user.save
             session["user_id"] = user.id
             redirect '/login'
         else

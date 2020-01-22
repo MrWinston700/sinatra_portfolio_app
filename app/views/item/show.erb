@@ -1,5 +1,5 @@
     <% if @item.status == "selling" %>
-        <p><%= @item.user.username %></p><br>
+        <a href="/profile/<%= @item.user.id%>"><p>@<%= @item.user.username %></p></a><br>
         <p><%= @item.name%></p><br>
         <p><%= @item.description%></p><br>
         <p>$<%= @item.cost%></p><br>

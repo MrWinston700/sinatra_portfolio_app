@@ -1,9 +1,18 @@
 <p>@<%= @user.username %></p>
-<p><%= @user.points %> points</p>
+<p>points:<%= @user.points %></p>
 
 <% @user.items.each do |item| %>
-    <h3><%= item.name%></h3><br>
-    <p><%= item.description%></p><br>
-    <p><%= item.status%></p><br>
-    <p>$<%= item.cost%></p><br>
+    <% if item.status == "selling" %>
+        <h3><%= item.name%></h3><br>
+        <p><%= item.description%></p><br>
+        <p><%= item.status%></p><br>
+        <p>$<%= item.cost%></p><br>
+        <a href="/item/<%=item.id%>/edit"><p>edit</p></a>
+        <a href="/item/<%=item.id%>/delete"><p>delete</p></a>
+    <% else %>
+        <h3><%= item.name%></h3><br>
+        <p><%= item.description%></p><br>
+        <p><%= item.status%></p><br>
+        <p>$<%= item.cost%></p><br>
+    <% end %>
 <% end %>

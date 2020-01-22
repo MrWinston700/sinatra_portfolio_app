@@ -80,15 +80,25 @@ class ItemController < ApplicationController
         @item = Item.find_by_id(params[:id])
         if @item.status != "bought" && @item.status != "sold"
           @item.status = "sold"
-          @item.save
+          
           @sold_item = Item.new 
           @sold_item.name = @item.name
           @sold_item.description = @item.description
           @sold_item.cost = @item.cost 
           @sold_item.status = "bought"
           @user = User.find_by_id(session[:user_id])
-          @user.items << @sold_item
-          redirect '/items'
+          if !(@item.cost > @user.points)
+            @user.items << @sold_item
+            @user.points = @user.points - @item.cost
+            @user.save
+            seller = User.find_by_id(@item.user_id)
+            seller.points = seller.points + @item.cost
+            seller.save
+            @item.save
+            redirect '/items'
+          else
+            erb :"error/funds"
+          end
         else 
           redirect '/items'
         end
