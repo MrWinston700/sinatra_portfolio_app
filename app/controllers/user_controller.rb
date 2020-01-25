@@ -53,7 +53,7 @@ class UserController < ApplicationController
       session.clear
       redirect "/"
     end
-
+    #this route will only items with the status = "selling" on a given user's profile
     get "/profile/:id" do
       if Helper.is_logged_in?(session)
         @user = User.find_by_id(params[:id])
@@ -66,7 +66,8 @@ class UserController < ApplicationController
 
 
     end
-    
+    #this route will show all transactions by the user as well as the user's remaining points
+    #this route is only available to the user logged in
     get "/profile" do
       if Helper.is_logged_in?(session)
         @user = Helper.current_user(session)
