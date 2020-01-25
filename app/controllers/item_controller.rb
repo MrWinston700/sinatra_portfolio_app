@@ -59,7 +59,7 @@ class ItemController < ApplicationController
     end
     patch '/item/:id' do 
       @item = Item.find_by_id(params[:id])
-    
+      #if statements enable user to edit only one attribute of the given item
       if params[:item].empty?
         redirect "/item/#{item.id}/edit"
       end
@@ -81,7 +81,9 @@ class ItemController < ApplicationController
       @item = Item.find_by_id(params[:id])
       erb :"item/show"
     end
-
+    #this route enables a user logged in to buy an item that has the status = "selling"
+    #it will also update both users profile. If users do not have enough points, they cannot
+    #purchase the item and will be redirected to "./views/error/funds"
     get '/item/:id/buy' do
       if Helper.is_logged_in?(session)
         @item = Item.find_by_id(params[:id])
