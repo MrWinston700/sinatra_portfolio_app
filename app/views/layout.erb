@@ -1,8 +1,11 @@
 <body style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTmSNuXPCAv3qv_Do9snlsdn13OpsCvxNdMYzMb2GyZczLmkOk&s');"> 
+ <%if Helper.is_logged_in?(session) %>
     <nav>
         <a href="/items"><p>home</p></a>
         <a href="/item/new"><p>create a new listing</p></a>
         <a href="/profile"><p>profile</p></a>
         <a href="/logout"><p>logout</p></a>
     </nav><br>
-    <%=yield %>
+ <%end%>
+
+ <%=yield %>
